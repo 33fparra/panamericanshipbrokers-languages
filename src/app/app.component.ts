@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     public translate: TranslateService
   ) {
     ///Importaciones para lenguajes
-    translate.addLangs(['en', 'es']);
+    translate.addLangs(['es','en']);
     const lang = translate.getBrowserLang()
     if ((lang !== 'es') && (lang !== 'en')) {
       translate.setDefaultLang('en');
