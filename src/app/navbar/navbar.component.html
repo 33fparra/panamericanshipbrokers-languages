@@ -93,7 +93,20 @@
 
 
       <a href="#contacto" class="nav-item nav-link">Contacto</a>
-      <div class="nav-item dropdown">
+
+      <span>
+        <select
+
+            #selectedLang
+            (change)="switchLang(selectedLang.value)">
+          <option *ngFor="let language of translate.getLangs()"
+            [value]="language"
+            [selected]="language === translate.currentLang">
+            {{ language }}
+          </option>
+        </select>
+      </span>
+<!--       <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><img style="margin-top: -5px;"
             src="../../assets/img/bandera/espana.png" /></a>
         <div class="dropdown-menu fade-up m-0">
@@ -104,7 +117,7 @@
               <img style="margin-top: -5px;"
               src="../../assets/img/bandera/espana.png"/></a>
         </div>
-      </div>
+      </div> -->
     </div>
 
   </div>

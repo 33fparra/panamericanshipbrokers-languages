@@ -39,16 +39,20 @@ import { NuevasConstruccionesComponent } from './departments/nuevas-construccion
 import { PlaysoundService } from './playsound.service';
 
 // firebase
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { FirestoreModule  } from '@angular/fire/firestore';
+import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { FirestoreModule } from '@angular/fire/firestore';
 
 import { AngularFireModule } from '@angular/fire/compat'; //para conectar con Firestore
 import { FormfireService } from './services/formfire.service';
 
+///Importaciones para lenguajes
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -70,7 +74,7 @@ import { FormfireService } from './services/formfire.service';
     MarineserviceComponent,
     QueHacemosComponent,
     NoticiasComponent,
-   
+
     Departments3Component,
     CareersComponent,
     PeopleNetworkComponent,
@@ -82,7 +86,7 @@ import { FormfireService } from './services/formfire.service';
     LngComponent,
     OffshoreComponent,
     NuevasConstruccionesComponent,
-    
+
 
   ],
   imports: [
@@ -96,13 +100,28 @@ import { FormfireService } from './services/formfire.service';
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    AngularFireModule.initializeApp(environment.firebase) //para conectaracon Firestore
-     
+    AngularFireModule.initializeApp(environment.firebase), //para conectaracon Firestore
+
+    ///Importaciones para lenguajes
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
+
   ],
-  providers: [CargarScriptsService, 
-              PlaysoundService, ScreenTrackingService,UserTrackingService, FormfireService],
+  providers: [CargarScriptsService,
+    PlaysoundService, ScreenTrackingService, UserTrackingService, FormfireService],
   bootstrap: [AppComponent],
 
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
+
+// AOT compilation support
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
