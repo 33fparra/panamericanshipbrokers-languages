@@ -24,10 +24,7 @@ export class NavbarComponent implements OnInit {
   
   
  
-    // playSound(){   
-    //   console.log("entro")
-       
-    //   }
+
     
   }
 
