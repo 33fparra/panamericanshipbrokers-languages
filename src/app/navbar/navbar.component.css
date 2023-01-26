@@ -68,6 +68,10 @@ Logo by Sneaker-mission.com (http://www.sneaker-mission.com/)
   .ht-ul{text-align: left;}
   /*.ht-ul hr{margin: 10px 0;}*/
   
+  .languages{
+    padding-top: 22px !important;
+    padding-right: 20px !important;
+  }
   
   
   @media screen and (max-width: 1169px){
