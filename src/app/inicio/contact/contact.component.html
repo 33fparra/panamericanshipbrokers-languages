@@ -10,7 +10,7 @@
                         <i class="fa fa-headphones fa-2x flex-shrink-0 p-3 text-white"></i>
                         <div class="ps-4">
                             
-                            <h3 class=" m-0" style="color: white;">Contacto</h3>
+                            <h3 class=" m-0" style="color: white;">{{'Contacto' | translate}}</h3>
                         </div>
                     </div>
                 </div>
@@ -20,23 +20,23 @@
                         <form class="form-group" [formGroup]='contactForm'>
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="name form-control border-0" placeholder="Nombre" style="height: 55px;" formControlName="name">
+                                    <input type="text" class="name form-control border-0" placeholder="{{'Nombre' | translate}}" style="height: 55px;" formControlName="name">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="email form-control border-0" placeholder="Correo" style="height: 55px;" formControlName="email">
+                                    <input type="email" class="email form-control border-0" placeholder="{{'Correo' | translate}}" style="height: 55px;" formControlName="email">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="phone form-control border-0" placeholder="Telefono" style="height: 55px;" formControlName="phone">
+                                    <input type="text" class="phone form-control border-0" placeholder="{{'Telefono' | translate}}" style="height: 55px;" formControlName="phone">
                                 </div>
                                 
                                 <div class="col-12">
-                                    <textarea class="message form-control border-0" placeholder="Mensaje" formControlName="message"></textarea>
+                                    <textarea class="message form-control border-0" placeholder="{{'Mensaje' | translate}}" formControlName="message"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button type="reset" class="btn w-100 py-3" 
                                     style="background-color:#154b7a; color:white;" 
                                     [disabled]="contactForm.invalid"
-                                    (click)="sendForm(contactForm.value)">Enviar</button>
+                                    (click)="sendForm(contactForm.value)">{{'Enviar' | translate}}</button>
                                 </div>
                             </div>
                             <p *ngIf="isSubmit">{{ submitMessage }}</p>
