@@ -11,8 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  // yaSonando = false;
-  // onWindowScrolled: boolean = false;
+
   constructor(
     private _CargaScripts:CargarScriptsService,
     private playSound:PlaysoundService,
@@ -21,16 +20,24 @@ export class NavbarComponent implements OnInit {
     ) {
     _CargaScripts.Carga(["navbar"]);
   }
+  espana:string = '../assets/img/bandera/espana.png';
+  english:string = '../assets/img/bandera/Inglaterra.png';
+  cambioIdioma:string = ''; 
+
+  options = [
+    { value: 'es', imageUrl: '../assets/img/bandera/espana.png', alt: 'Imagen Opción 1', label: 'Opción 1' },
+    { value: 'en', imageUrl: '../assets/img/bandera/Inglaterra.png', alt: 'Imagen Opción 2', label: 'Opción 2' },
+    
+  ];
   switchLang = (lang: string) => {
     this.translate.use(lang)
+    console.log();
+    this.cambioIdioma = lang;
+    
   }
 
   ngOnInit(): void {
+    this.switchLang('es');
   }
-
-
-
-
-
   }
 

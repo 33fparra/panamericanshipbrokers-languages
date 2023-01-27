@@ -91,6 +91,7 @@
       <span class="languages" >
         <select
 
+
             #selectedLang
             (change)="switchLang(selectedLang.value)">
           <option *ngFor="let language of translate.getLangs()"
@@ -99,6 +100,14 @@
             {{ language }}
           </option>
         </select>
+        <div *ngIf="this.cambioIdioma == 'es'">  
+          <img [src]="espana"/>
+        </div>
+        <div *ngIf="this.cambioIdioma == 'en'">  
+          <img [src]="english"/>
+        </div>
+        <!-- <img *ngIf="this.cambioIdioma == 'es' ? [src]='espana': [src]='english'"   /> -->
+
       </span>
 
     </div>
